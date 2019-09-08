@@ -18,9 +18,6 @@ class BbsController extends Controller
         $comment = $request->input('comment');
 
         // 変数をビューに渡す
-        return view('bbs.index')->with([
-            "name" => $name,
-            "comment"  => $comment,
-        ]);
+        return view('bbs.index')->with(["name" => $name, "comment"  => $comment,]);
     }
 }
