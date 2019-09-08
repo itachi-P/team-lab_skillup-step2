@@ -13,6 +13,12 @@ class BbsController extends Controller
     // 投稿された内容を表示するページ
     public function create(Request $request) {
 
+        // バリデーションチェック
+        $request->validate([
+            'name' => 'required|max:10',
+            'comment' => 'required|min:5|max:140',
+        ]);
+        
         // 投稿内容を受け取って変数に入れる
         $name = $request->input('name');
         $comment = $request->input('comment');
