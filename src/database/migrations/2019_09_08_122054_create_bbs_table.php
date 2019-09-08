@@ -1,0 +1,23 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateBbsTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('bbs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name'); // 追記項目
+            $table->string('comment'); // 追記項目
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('bbs');
+    }
+}
