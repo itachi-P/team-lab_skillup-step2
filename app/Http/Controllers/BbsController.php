@@ -17,8 +17,8 @@ class BbsController extends Controller
 
         // バリデーションチェック
         $request->validate([
-            'name' => 'required|max:10',
-            'comment' => 'required|min:5|max:140',
+            'name' => 'required|max:30',
+            'comment' => 'required|min:3|max:140',
         ]);
 
         // 投稿内容を受け取って変数に入れる
