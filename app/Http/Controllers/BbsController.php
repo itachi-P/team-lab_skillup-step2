@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Bbs; // さっき作成したモデルファイルを引用
+use App\Model\Bbs; // 作成したモデルファイルを引用
 
 class BbsController extends Controller
 {
@@ -25,7 +25,7 @@ class BbsController extends Controller
         $name = $request->input('name');
         $comment = $request->input('comment');
 
-        Bbs::insert(["name" => $name, "comment" => $comment]); // データベーステーブルbbsに投稿内容を入れる
+        Bbs::insert(["name" => $name, "comment" => $comment]); // bbsテーブルに投稿内容を追加
 
         $bbs = Bbs::all(); // 全データの取り出し
         return view('bbs.index', ["bbs" => $bbs]); // bbs.indexにデータを渡す
