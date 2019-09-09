@@ -11,7 +11,7 @@
         <hr>
         <div>あなたのニックネームは<b>{{ $nickname }}</b>です</div>
         <div>あなたのトークンは[ {{ $token }} ]です</div>
-        <div>リポジトリ一覧</div>
+        <h3>リポジトリ一覧</h3>
         <ul>
         @foreach($repos as $repo)
             <li>{{ $repo }}</li>
