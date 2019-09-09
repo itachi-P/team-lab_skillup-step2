@@ -8,8 +8,9 @@
     </head>
     <body>
         <div>{{ $info }}</div>
-        <div>あなたのニックネームは{{ $nickname }}です</div>
-        <div>あなたのトークンは{{ $token }}です</div>
+        <hr>
+        <div>あなたのニックネームは<b>{{ $nickname }}</b>です</div>
+        <div>あなたのトークンは[ {{ $token }} ]です</div>
         <div>リポジトリ一覧</div>
         <ul>
         @foreach($repos as $repo)
@@ -17,15 +18,12 @@
         @endforeach
         </ul>
 
+        <hr>
         <form action="/github/issue" method="post">
             {{ csrf_field() }}
-
             <div>repo : <input type="text" name="repo"></div>
-
             <div>title : <input type="text" name="title"></div>
-
             <div>body : <input type="text" name="body"></div>
-
             <input type="submit" value="Confirm">
         </form>
     </body>
