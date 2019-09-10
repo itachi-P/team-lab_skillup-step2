@@ -56,7 +56,7 @@ class LoginController extends Controller
 
         $now = date("Y/m/d H:i:s");
         $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
-        if (emptry($app_user)) {
+        if (empty($app_user)) {
             DB::insert('insert into public.user (github_id, created_at, updated_at) values (?, ?, ?)',
                 [$github_user->user['login'], $now, $now]);
         }
