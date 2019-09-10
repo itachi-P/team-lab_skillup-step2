@@ -14,4 +14,4 @@ Route::post('github/issue', 'Github\GithubController@createIssue');
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
 
-Route::post('user', 'User\UserController@updataUser');
+Route::post('user', 'User\UserController@updateUser');
