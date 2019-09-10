@@ -6,7 +6,6 @@ use App\Model\Bbs; // 作成したモデルファイルを引用
 
 class BbsController extends Controller
 {
-    // Indexページの表示
     public function index() {
         $bbs = Bbs::all(); // 全データの取り出し
         return view('bbs.index', ['bbs' => $bbs]);  // bbs.indexにデータを渡す
@@ -24,8 +23,8 @@ class BbsController extends Controller
         // 投稿内容を受け取って変数に入れる
         $name = $request->input('name');
         $comment = $request->input('comment');
-
-        Bbs::insert(["name" => $name, "comment" => $comment]); // bbsテーブルに投稿内容を追加
+        // bbsテーブルに投稿内容を追加
+        Bbs::insert(["name" => $name, "comment" => $comment]);
 
         $bbs = Bbs::all(); // 全データの取り出し
         return view('bbs.index', ["bbs" => $bbs]); // bbs.indexにデータを渡す

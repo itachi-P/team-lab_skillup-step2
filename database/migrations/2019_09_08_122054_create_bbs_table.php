@@ -10,8 +10,8 @@ class CreateBbsTable extends Migration
     {
         Schema::create('bbs', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name'); // 追記項目
-            $table->string('comment'); // 追記項目
+            $table->string('name');
+            $table->string('comment');
             $table->timestamps();
         });
     }

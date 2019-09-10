@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Github;
 
 use App\Http\Controllers\Controller;
