@@ -37,14 +37,8 @@ class HomeController extends Controller
 
         if ($request->file('file')->isValid([])) {
             $path = $request->file->store('public');    //storage/app/publicに保存
-            // return view('home')->with('filename', basename($path));
+            return view('home')->with('filename', basename($path));
 
-            // （課題）画像をアップロードと同時にDBにファイルパスを保存する形式に変更
-            $parameter = ['filename' => basename($path),];
-            $sqlValue = "'" . basename($path) . "'";
-            $image = new Image;
-            $image->fill($parameter)->save();
-            return view('home', $parameter);
         } else {
             return redirect()
                 ->back()

@@ -13,9 +13,9 @@
     <!-- アップロードした画像。なければ表示しない -->
     @isset($filename)
     <div>
-        <p>filename:{{$filename}}</p>
-        {{-- <p>user_id:{{$user_id}}</p> --}}
-        {{-- <p>$request:{{$request}}</p> --}}
+        <p>filename: {{$filename}}</p>
+        {{-- <p>user_id: {{$user_id}}</p> --}}
+        {{-- <p>$request: {{$request}}</p> --}}
         <img src="{{ asset('storage/' . $filename) }}">
     </div>
     @endisset

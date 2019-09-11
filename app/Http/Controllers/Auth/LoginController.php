@@ -55,9 +55,9 @@ class LoginController extends Controller
         $github_user = Socialite::driver('github')->user();
 
         $now = date("Y/m/d H:i:s");
-        $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
+        $app_user = DB::select('select * from user where github_id = ?', [$github_user->user['login']]);
         if (empty($app_user)) {
-            DB::insert('insert into public.user (github_id, created_at, updated_at) values (?, ?, ?)',
+            DB::insert('insert into user (github_id, created_at, updated_at) values (?, ?, ?)',
                 [$github_user->user['login'], $now, $now]);
         }
         $request->session()->put('github_token', $github_user->token);
