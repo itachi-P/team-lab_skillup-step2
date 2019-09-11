@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use App\Model\Image;
 
 class HomeController extends Controller
 {
@@ -39,8 +40,10 @@ class HomeController extends Controller
             // return view('home')->with('filename', basename($path));
 
             // （課題）画像をアップロードと同時にDBにファイルパスを保存する形式に変更
-            $user_id = $request->user->id;
-            $parameter = ['filename' => basename($path), 'user_id' => $user_id];
+            $parameter = ['filename' => basename($path),];
+            $sqlValue = "'" . basename($path) . "'";
+            $image = new Image;
+            $image->fill($parameter)->save();
             return view('home', $parameter);
         } else {
             return redirect()
