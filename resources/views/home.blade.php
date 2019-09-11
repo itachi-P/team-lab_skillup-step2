@@ -13,6 +13,7 @@
     <!-- アップロードした画像。なければ表示しない -->
     @isset($filename)
     <div>
+        <p>filename:{{$filename}}</p>
         <img src="{{ asset('storage/' . $filename) }}">
     </div>
     @endisset
