@@ -39,8 +39,8 @@ class HomeController extends Controller
             // return view('home')->with('filename', basename($path));
 
             // （課題）画像をアップロードと同時にDBにファイルパスを保存する形式に変更
-            
-            $parameter = ['filename' => basename($path), ];
+            $user_id = $request->user->id;
+            $parameter = ['filename' => basename($path), 'user_id' => $user_id];
             return view('home', $parameter);
         } else {
             return redirect()

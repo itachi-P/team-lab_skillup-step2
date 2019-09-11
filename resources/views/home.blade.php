@@ -14,6 +14,7 @@
     @isset($filename)
     <div>
         <p>filename:{{$filename}}</p>
+        <p>user_id:{{$user_id}}</p>
         <img src="{{ asset('storage/' . $filename) }}">
     </div>
     @endisset
