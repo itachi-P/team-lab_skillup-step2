@@ -23,7 +23,7 @@ class GithubController extends Controller
             'headers' => ['Authorization' => 'token ' . $token]
         ]);
 
-        $app_user = DB::select('select * from public.user where github_id = ?', [$github_user->user['login']]);
+        $app_user = DB::select('select * from user where github_id = ?', [$github_user->user['login']]);
 
         return view('github', [
             'user' => $app_user[0],
