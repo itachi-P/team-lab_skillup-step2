@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use App\Model\Image;
 
 class HomeController extends Controller
 {
@@ -16,7 +16,7 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
+    
     /**
      * ファイルアップロード処理
      */
@@ -24,7 +24,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'file' => [
-                // 入力必須であること
+                // 必須
                 'required',
                 // アップロードされたファイルであること
                 'file',
@@ -34,14 +34,10 @@ class HomeController extends Controller
                 'mimes:jpeg,png',
             ]
         ]);
+
         if ($request->file('file')->isValid([])) {
-            $path = $request->file->store('public');    //storage/app/publicに保存
-            // return view('home')->with('filename', basename($path));
-            // （課題）画像をアップロードと同時にDBにファイルパスを保存する形式に変更	
-            $parameter = ['filename' => basename($path),];	
-            $image = new Image;	
-            $image->fill($parameter)->save();	
-            return view('home', $parameter); 
+            $path = $request->file->store('public');
+            return view('home')->with('filename', basename($path));
         } else {
             return redirect()
                 ->back()

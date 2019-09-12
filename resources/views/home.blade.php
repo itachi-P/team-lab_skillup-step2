@@ -1,7 +1,7 @@
 <!-- エラーメッセージ。なければ表示しない -->
 @if ($errors->any())
 <ul>
-    @foreach ($errors as $error)
+    @foreach($errors->all() as $error)
     <li>{{ $error }}</li>
     @endforeach
 </ul>
@@ -11,11 +11,8 @@
 <form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
 
     <!-- アップロードした画像。なければ表示しない -->
-    @isset($filename)
+    @isset ($filename)
     <div>
-        <p>filename: {{$filename}}</p>
-        {{-- <p>user_id: {{$user_id}}</p> --}}
-        {{-- <p>$request: {{$request}}</p> --}}
         <img src="{{ asset('storage/' . $filename) }}">
     </div>
     @endisset
@@ -25,5 +22,5 @@
     <br>
     <hr>
     {{ csrf_field() }}
-    <button class="btn btn-succes"> Upload </button>
+    <button class="btn btn-success"> Upload </button>
 </form>
