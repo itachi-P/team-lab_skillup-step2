@@ -1,10 +1,9 @@
 <?php
 
-/*
+# GitHubアカウントでログインへのリンクを表示
 Route::get('/', function () {
     return view('welcome');
 });
-*/
 
 Route::get('/user', 'UserController@index');
 
@@ -18,5 +17,5 @@ Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback
 
 Route::post('user', 'User\UserController@updateUser');
 
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::post('/upload', 'HomeController@upload');
