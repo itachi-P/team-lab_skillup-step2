@@ -19,7 +19,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'file' => [
-                // 必須であること
+                // 入力必須であること
                 'required',
                 // アップロードされたファイルであること
                 'file',

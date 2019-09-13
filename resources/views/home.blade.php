@@ -6,7 +6,7 @@
 <body>
 
 <h1>画像アップロード</h1>
-{{-- imagesテーブルから取得した保存済み画像リスト --}}
+{{-- imagesテーブルから取得した保存済み画像リンク一覧 --}}
 @if (isset($images))    
 <ul>
     @foreach ($images as $image)
@@ -31,13 +31,10 @@
 <!-- フォーム -->
 <form action="{{ url('upload') }}" method="POST" enctype="multipart/form-data">
 
-    <!-- アップロードした画像。なければ表示しない -->
+    <!-- 直前にアップロードした画像。なければ表示しない -->
     @isset($filename)
     <div>
-        {{-- <p>filename: {{$filename}}</p> --}}
-        {{-- <p>user_id: {{$user_id}}</p> --}}
-        {{-- <img src="{{ asset('storage/' . $filename) }}"> --}}
-        {{-- <img src="/images/{{$filename}}">  --}}
+        <img src="{{ asset('images/' . $filename) }}">
     </div>
     @endisset
 
