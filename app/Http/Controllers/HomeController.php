@@ -1,18 +1,13 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\Image;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $app_user = DB::select('select * from user where github_id = "itachi-P"');
-        dump($app_user);
-        
         $images = Image::all();
         return view('home', ['images' => $images]);
     }
@@ -24,7 +19,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'file' => [
-                // 必須
+                // 必須であること
                 'required',
                 // アップロードされたファイルであること
                 'file',
@@ -36,10 +31,8 @@ class HomeController extends Controller
         ]);
 
         if ($request->file('file')->isValid([])) {
-            //$path = $request->file->move('~/LaravelPrj/src/storage/app/public/');
             //$path = $request->file->store('public');
-            $filename = $request->file->getClientOriginalName();
-            // echo '$filename:' . $filename;
+            $filename = $request->file->getClientOriginalName(); //一意なID発行の方が望ましい
             $move = $request->file->move('./images', $filename);
             // echo '$move:' . $move;
 
