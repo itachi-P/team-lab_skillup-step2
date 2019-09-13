@@ -3,18 +3,11 @@ namespace App\Http\Controllers;
 
 use Illumin1ate\Http\Request;
 use App\Model\Image;
-use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        /* STEP2-6.GitHub連携ログインで用意したuserテーブル(デフォルトのusersとは別物かつModel無し)
-        /  use Illuminate\Support\Facades\DBともどもテスト表示用おまけコード。必要性なし
-        */
-        $app_user = DB::select('select * from user where github_id = "itachi-P"');
-        dump($app_user);
-
         $images = Image::all();
         return view('home', ['images' => $images]);
     }
