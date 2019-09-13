@@ -10,8 +10,8 @@
 @if (isset($images))    
 <ul>
     @foreach ($images as $image)
-    <li><a href="localhost/storage/{{ $image->filename }}" target="_brank">{{ $image->filename }}
-        <img src="localhost/storage/{{ $image->filename }}" border="0" width="100px" height="100px" /></a>
+    <li><a href="images/{{ $image->filename }}" target="_brank">{{ $image->filename }}
+        <img src="images/{{ $image->filename }}" border="0" width="100px" height="100px" /></a>
     
     </li>
     @endforeach
@@ -33,10 +33,10 @@
     <!-- アップロードした画像。なければ表示しない -->
     @isset($filename)
     <div>
-        <p>filename: {{$filename}}</p>
+        {{-- <p>filename: {{$filename}}</p> --}}
         {{-- <p>user_id: {{$user_id}}</p> --}}
         {{-- <img src="{{ asset('storage/' . $filename) }}"> --}}
-        <img src="/images/{{$filename}}"> 
+        {{-- <img src="/images/{{$filename}}">  --}}
     </div>
     @endisset
 

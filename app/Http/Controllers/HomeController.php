@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
+use App\Model\Image;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $app_user = DB::select('select * from user where github_id = "itachi-P"');
+        dump($app_user);
+        
+        $images = Image::all();
+        return view('home', ['images' => $images]);
     }
 
     /**
@@ -39,10 +39,15 @@ class HomeController extends Controller
             //$path = $request->file->move('~/LaravelPrj/src/storage/app/public/');
             //$path = $request->file->store('public');
             $filename = $request->file->getClientOriginalName();
-            echo '$filename:' . $filename;
+            // echo '$filename:' . $filename;
             $move = $request->file->move('./images', $filename);
-            echo '$move:' . $move;
-            return view('home')->with('filename', basename($move));
+            // echo '$move:' . $move;
+
+            $images = new Image;
+            $images->fill(['filename' => $filename])->save();
+            $images = Image::all();
+            $parameters = ['filename' => $filename, 'images' => $images];
+            return view('home', $parameters);
         } else {
             return redirect()
                 ->back()
