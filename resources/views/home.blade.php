@@ -10,9 +10,10 @@
 @if (isset($images))    
 <ul>
     @foreach ($images as $image)
-    <li><a href="images/{{ $image->filename }}" target="_brank">{{ $image->filename }}
-        <img src="images/{{ $image->filename }}" border="0" width="100px" height="100px" /></a>
-    
+    <li>
+        <a href="images/{{ $image->filename }}" target="_brank">
+            <img src="images/{{ $image->filename }}" border="0" width="100px" height="100px" />
+        </a>   
     </li>
     @endforeach
 </ul>
