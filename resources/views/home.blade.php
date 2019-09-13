@@ -7,14 +7,16 @@
 
 <h1>画像アップロード</h1>
 {{-- imagesテーブルから取得した保存済み画像リスト --}}
+@if (isset($images))    
 <ul>
     @foreach ($images as $image)
-    <li><a href="localhost:8000/storage/{{ $image->filename }}" target="_brank">{{ $image->filename }}
-        <img src="localhost:8000/storage/{{ $image->filename }}" border="0" width="100px" height="100px" /></a>
+    <li><a href="localhost/storage/{{ $image->filename }}" target="_brank">{{ $image->filename }}
+        <img src="localhost/storage/{{ $image->filename }}" border="0" width="100px" height="100px" /></a>
     
     </li>
     @endforeach
 </ul>
+@endif
 
 <!-- エラーメッセージ。なければ表示しない -->
 @if ($errors->any())
@@ -33,8 +35,8 @@
     <div>
         <p>filename: {{$filename}}</p>
         {{-- <p>user_id: {{$user_id}}</p> --}}
-        <img src="{{ asset('storage/' . $filename) }}">
-        <img src="localhost:8000/storage/{{$filename}}"> 
+        {{-- <img src="{{ asset('storage/' . $filename) }}"> --}}
+        <img src="/images/{{$filename}}"> 
     </div>
     @endisset
 

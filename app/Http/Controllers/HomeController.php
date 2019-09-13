@@ -1,15 +1,20 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
-use App\Model\Image;
 
 class HomeController extends Controller
 {
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        $images = Image::all();
-        return view('home', ['images' => $images]);
+        return view('home');
     }
 
     /**
@@ -19,7 +24,7 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'file' => [
-                // 入力必須であること
+                // 必須
                 'required',
                 // アップロードされたファイルであること
                 'file',
@@ -29,17 +34,15 @@ class HomeController extends Controller
                 'mimes:jpeg,png',
             ]
         ]);
+
         if ($request->file('file')->isValid([])) {
-            $path = $request->file->store('public');    //storage/app/publicに保存
-            // return view('home')->with('filename', basename($path));
-            // （課題）画像をアップロードと同時にDBにファイルパスを保存する形式に変更	
-//            $parameter = ['filename' => basename($path),];	
-            $images = new Image;	
-            $images->fill(['filename' => basename($path)])->save();
-            //Image::insert(["filename" => basename($path)]);
-            $images = Image::all();
-            $parameters = ['images' => $images, 'filename' => basename($path)];
-            return view('home', $parameters); 
+            //$path = $request->file->move('~/LaravelPrj/src/storage/app/public/');
+            //$path = $request->file->store('public');
+            $filename = $request->file->getClientOriginalName();
+            echo '$filename:' . $filename;
+            $move = $request->file->move('./images', $filename);
+            echo '$move:' . $move;
+            return view('home')->with('filename', basename($move));
         } else {
             return redirect()
                 ->back()
