@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>画像アップロード</title>
+    <link rel="icon" href="{{ asset('fuca_tehepero_icon_32x32.ico') }}" sizes="32x32">
 </head>
 <body>
 
@@ -12,7 +13,7 @@
     @foreach ($images as $image)
     <li>
         <a href="images/{{ $image->filename }}" target="_brank">
-            <img src="images/{{ $image->filename }}" border="0" width="100px" height="100px" />
+            <img src="images/{{ $image->filename }}" width="100px" height="100px" />
         </a>   
     </li>
     @endforeach
