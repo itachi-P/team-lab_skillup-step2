@@ -19,14 +19,10 @@ class HomeController extends Controller
     {
         $this->validate($request, [
             'file' => [
-                // 入力必須であること
-                'required',
-                // アップロードされたファイルであること
-                'file',
-                // 画像ファイルであること
-                'image',
-                // MIMEタイプを指定
-                'mimes:jpeg,png',
+                'required', // 入力必須であること    
+                'file', // アップロードされたファイルであること
+                'image',    // 画像ファイルであること
+                'mimes:jpeg,png',   // MIMEタイプを指定
             ]
         ]);
 
@@ -34,7 +30,6 @@ class HomeController extends Controller
             //$path = $request->file->store('public');
             $filename = $request->file->getClientOriginalName(); //一意なID発行の方が望ましい
             $move = $request->file->move('./images', $filename);
-            // echo '$move:' . $move;
 
             $images = new Image;
             $images->fill(['filename' => $filename])->save();
