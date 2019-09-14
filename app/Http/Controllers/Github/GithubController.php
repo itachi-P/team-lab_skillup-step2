@@ -25,7 +25,7 @@ class GithubController extends Controller
 
         $app_user = DB::select('select * from user where github_id = ?', [$github_user->user['login']]);
         
-        // テスト用コード
+        // テスト用画面表示
         dump($app_user);
 
         return view('github', [

@@ -20,7 +20,7 @@ class HomeController extends Controller
         $this->validate($request, [
             'file' => [
                 'required', // 入力必須であること    
-                'file', // アップロードされたファイルであること
+                'file',     // アップロードされたファイルであること
                 'image',    // 画像ファイルであること
                 'mimes:jpeg,png',   // MIMEタイプを指定
             ]
